@@ -1,6 +1,7 @@
 
 // 채유진
 // 미니프로젝트 Quiz 6 - 대선
+// https://gist.github.com/yj0903/4b150ace9c00aef55b40f5130325be0b
 
 import java.util.HashMap;
 import java.util.Random;
