@@ -10,7 +10,24 @@
 
 public class Practice1 {
     public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 500};
+        int even = 0;
+        int odd = 0;
 
+        int evenCnt = 0;
+        int oddCnt = 0;
+
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                evenCnt ++;
+                even += num;
+
+            } else {
+                oddCnt ++;
+                odd += num;
+            }
+        }
+        System.out.println("짝수 평균: " + (double) even/evenCnt);
+        System.out.println("홀수 평균: " + (double) odd/oddCnt);
     }
-
 }
