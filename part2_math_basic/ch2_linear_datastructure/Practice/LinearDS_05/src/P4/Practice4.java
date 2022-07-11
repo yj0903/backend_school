@@ -7,8 +7,6 @@ package P4;
 // 각 문자열의 첫 글자가 같은 것끼리 같은 연결 리스트로 관리하기
 
 
-import java.util.HashSet;
-
 class Node {
     String data;
     Node next;

@@ -2,9 +2,61 @@
 // 원형 연결 리스트 (Circular Linked List) 구현
 
 class CircularLinkedList {
+    NodeBi head;
+    NodeBi tail;
 
+    CircularLinkedList(NodeBi node) {
+        this.head = node;
+        this.tail = node;
+        node.next = this.head;
+        node.prev = this.head;
+    }
+
+    public boolean isEmpty() {
+        if (this.head == null) {
+            return true;
+        }
+        return false;
+    }
 
     // 연결 리스트에 데이터 추가
+    public void addData(int data, Integer beforeData) {
+        if (isEmpty()) {
+            NodeBi newNodeBi = new NodeBi(data, null, null);
+            this.head = newNodeBi;
+            this.tail = newNodeBi;
+            newNodeBi.next = newNodeBi;
+            newNodeBi.prev = newNodeBi;
+        } else if (beforeData == null) {
+            NodeBi newNodeBi = new NodeBi(data, this.head, this.tail);
+            this.tail.next = newNodeBi;
+            this.head.prev = newNodeBi;
+            this.tail = newNodeBi;
+        } else {
+            NodeBi cur = this.head;
+            NodeBi pre = this.head.prev;
+            do {
+                if (cur.data == beforeData) {
+                    if (cur == this.head) {
+                        NodeBi newNodeBi = new NodeBi(data, this.head, this.tail);
+                        this.tail.next = newNodeBi;
+                        this.head.prev = newNodeBi;
+                        this.head = newNodeBi;
+                    } else {
+                        NodeBi newNodeBi = new NodeBi(data, cur, pre);
+                        pre.next = newNodeBi;
+                        cur.prev = newNodeBi;
+                    }
+                    break;
+                }
+                pre = cur;
+                cur = cur.next;
+            } while (cur != this.head);
+
+        }
+
+    }
+
     // before_data 가 null 인 경우, 가장 뒤에 추가
     // before_data 에 값이 있는 경우, 해당 값을 가진 노드 앞에 추가
 
